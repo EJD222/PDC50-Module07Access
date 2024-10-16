@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Shell.NavBarIsVisible="False"
+             x:Class="Module07DataAccess.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,30"
+            Spacing="25">
+            <Image
+                Source="database.png"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="Database" 
+                Margin="0,30,0,15"/>
+
+            <Label
+                Text="Database Connection"
+                FontFamily="{DynamicResource PrimaryFontFamilySemiBold}"
+                FontSize="30"
+                FontAttributes="Bold"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Label 
+                x:Name="ConnectionStatusLabel"
+                Text=""
+                FontSize="16" 
+                FontFamily="{DynamicResource PrimaryFontFamily}"
+                FontAttributes="Bold" 
+                Margin="0,0,0,5"/>
+            <Button
+                Text="Test Connection" 
+                Clicked="OnTestConnectionClicked" 
+                HorizontalOptions="Fill"
+                FontAttributes="Bold" 
+                BackgroundColor="#FF9801"
+                FontFamily="{DynamicResource PrimaryFontFamily}"
+                Margin="0,0,0,15" />
+
+            <Button
+                Text="View Personal"
+                Clicked="OpenViewPersonal"
+                FontFamily="{DynamicResource PrimaryFontFamilySemiBold}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

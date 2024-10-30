@@ -6,8 +6,7 @@
 
     <ScrollView>
         <VerticalStackLayout
-            Padding="30,30"
-            Spacing="25">
+            Padding="30,30">
             <Image
                 Source="database.png"
                 HeightRequest="185"
@@ -20,7 +19,8 @@
                 FontFamily="{DynamicResource PrimaryFontFamilySemiBold}"
                 FontSize="30"
                 FontAttributes="Bold"
-                SemanticProperties.HeadingLevel="Level1" />
+                SemanticProperties.HeadingLevel="Level1" 
+                Margin="0,30,0,15"/>
 
             <Label 
                 x:Name="ConnectionStatusLabel"
@@ -28,19 +28,21 @@
                 FontSize="16" 
                 FontFamily="{DynamicResource PrimaryFontFamily}"
                 FontAttributes="Bold" 
-                Margin="0,0,0,5"/>
+                Margin="0,0,0,30"/>
+            
             <Button
                 Text="Test Connection" 
                 Clicked="OnTestConnectionClicked" 
                 HorizontalOptions="Fill"
                 FontAttributes="Bold" 
                 BackgroundColor="#FF9801"
-                FontFamily="{DynamicResource PrimaryFontFamily}"
+                FontFamily="{DynamicResource PrimaryFontFamilySemiBold}"
                 Margin="0,0,0,15" />
 
             <Button
                 Text="View Personal"
                 Clicked="OpenViewPersonal"
+                BackgroundColor="#02A9F4"
                 FontFamily="{DynamicResource PrimaryFontFamilySemiBold}"/>
         </VerticalStackLayout>
     </ScrollView>

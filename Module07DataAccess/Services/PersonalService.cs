@@ -42,5 +42,48 @@ namespace Module07DataAccess.Services
             }
             return personalService;
         }
+
+        public async  Task<bool> AddPersonalAsync(Personal newPerson)
+        {
+            try 
+            {
+                using (var conn = new MySqlConnection(_databaseConnectionString)) 
+                {
+                    await conn.OpenAsync();
+                    var cmd = new MySqlCommand("Insert INTO tblPersonal (Name, Gender, ContactNo) VALUES (@Name, @Gender, @ContactNo)", conn);
+                    cmd.Parameters.AddWithValue("@Name", newPerson.Name);
+                    cmd.Parameters.AddWithValue("@Gender", newPerson.Gender);
+                    cmd.Parameters.AddWithValue("@ContactNo", newPerson.ContactNo);
+                    var result = await cmd.ExecuteNonQueryAsync();
+                    return result > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error adding personal recod: {ex.Message}");
+                return false;
+            }
+        }
+
+        public async Task<bool> DeletePersonalAsync(int id)
+        {
+            try
+            {
+                using (var conn = new MySqlConnection(_databaseConnectionString))
+                {
+                    await conn.OpenAsync();
+                    var cmd = new MySqlCommand("DELETE FROM tblPersonal WHERE ID=@ID", conn);
+                    cmd.Parameters.AddWithValue("@ID", id);
+
+                    var result = await cmd.ExecuteNonQueryAsync();
+                    return result > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error deleting personal record: {ex.Message}");
+                return false;
+            }
+        }
     }
 }

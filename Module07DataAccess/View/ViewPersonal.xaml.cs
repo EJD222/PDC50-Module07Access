@@ -18,4 +18,6 @@ public partial class ViewPersonal : ContentPage
     {
         await Shell.Current.GoToAsync("//MainPage");
     }
+
+
 }

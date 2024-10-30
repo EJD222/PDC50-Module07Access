@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tfm22R6ozP0=",
+  "dgSpecHash": "BOcm+nhMcLc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\21-1404-928\\Documents\\BSIT4A-Diaz\\PDC50\\Module07DataAccess\\Module07DataAccess\\Module07DataAccess.csproj",
+  "projectFilePath": "C:\\Users\\21-1404-928\\Documents\\BSIT4A-Diaz\\PDC50\\PDC50-Module07Access\\Module07DataAccess\\Module07DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\21-1404-928\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "C:\\Users\\21-1404-928\\.nuget\\packages\\communitytoolkit.maui\\9.1.0\\communitytoolkit.maui.9.1.0.nupkg.sha512",

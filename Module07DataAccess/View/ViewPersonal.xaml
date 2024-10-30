@@ -1,40 +1,105 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Module07DataAccess.ViewModel"
              x:Class="Module07DataAccess.View.ViewPersonal"
              Shell.NavBarIsVisible="False"
              Title="ViewPersonal">
-    <VerticalStackLayout
-           Padding="30,30"
-           Spacing="25">
-        <Label 
-            Text="Personal Information"
-            FontSize="20" 
-            HorizontalOptions="Center" 
-            FontFamily="{DynamicResource PrimaryFontFamilySemiBold}"/>
-
-        <ListView ItemsSource="{Binding PersonalList}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Name}"
-                              Detail="{Binding Gender}"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
-        <Button Text="Load Data" 
-                Command="{Binding LoadDataCommand}"
+    <ScrollView>
+        <VerticalStackLayout
+           Padding="30,30">
+            
+            <Label 
+                Text="Personal Information"
+                FontSize="20" 
+                HorizontalOptions="Center" 
                 FontFamily="{DynamicResource PrimaryFontFamilySemiBold}"/>
 
-        <Label x:Name="ConnectionStatusLabel"
+            <ListView ItemsSource="{Binding PersonalList}" SelectedItem="{Binding SelectedPersonal}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame 
+                                CornerRadius="10"
+                                BorderColor="Transparent"
+                                Margin="5,5,5,0">
+
+                                <HorizontalStackLayout Padding="10" Spacing="0">
+
+                                    <StackLayout VerticalOptions="Center">
+                                        <Label 
+                                            Text="{Binding Name}" 
+                                            FontSize="14" 
+                                            FontFamily="{DynamicResource PrimaryFontFamilySemiBold}" />
+
+                                        <Label 
+                                            Text="{Binding Gender}" 
+                                            FontSize="12" 
+                                            FontFamily="{DynamicResource PrimaryFontFamily}" />
+
+                                        <Label 
+                                            Text="{Binding ContactNo}" 
+                                            FontSize="12"
+                                            FontFamily="{DynamicResource PrimaryFontFamily}" />
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:PersonalViewModel}},
+                                                    Path=SelectedPersonCommand}"
+                                                    CommandParameter="{Binding .}"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </HorizontalStackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button 
+                Text="Load Data" 
+                Command="{Binding LoadDataCommand}"
+                FontFamily="{DynamicResource PrimaryFontFamilySemiBold}"
+                BackgroundColor="#FF9801"
+                Margin="0,10,0,25"/>
+
+            <Label 
+                Text="Add New Person"
+                FontSize="20" 
+                HorizontalOptions="Center" 
+                FontFamily="{DynamicResource PrimaryFontFamilySemiBold}"
+                Margin="0,0,0,25"/>
+
+            <Entry Placeholder="Name" Text="{Binding NewPersonalName}" Margin="0,0,0,15"/>
+            <Entry Placeholder="Gender" Text="{Binding NewPersonalGender}" Margin="0,0,0,15"/>
+            <Entry Placeholder="Contact No" Text="{Binding NewPersonalContactNo}" Margin="0,0,0,15"/>
+
+            <Button 
+                Text="Add Person" 
+                BackgroundColor="#FF9801"
+                Command="{Binding AddPersonalCommand}"
+                FontFamily="{DynamicResource PrimaryFontFamilySemiBold}"
+                Margin="0,10,0,25"/>
+
+            <Button 
+                Text="Delete Person" 
+                BackgroundColor="#FF9801"
+                Command="{Binding DeletePersonCommand}" IsEnabled="{Binding IsPersonSelected}"
+                FontFamily="{DynamicResource PrimaryFontFamilySemiBold}"
+                Margin="0,10,0,5"/>
+
+
+            <Label x:Name="ConnectionStatusLabel"
                Text="{Binding StatusMessage}"
                FontFamily="{DynamicResource PrimaryFontFamilySemiBold}"
                FontSize="18"
-               HorizontalOptions="Center"/>
+               HorizontalOptions="Center"
+               Margin="0,0,0,25"/>
 
-        <Button
+            <Button
             Text="Back to Main Page"
+            BackgroundColor="#02A9F4"
             FontFamily="{DynamicResource PrimaryFontFamilySemiBold}"
             Clicked="OpenMainPage"/>
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
